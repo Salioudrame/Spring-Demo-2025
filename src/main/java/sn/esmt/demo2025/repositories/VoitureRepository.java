@@ -22,6 +22,7 @@ public class VoitureRepository implements VehiculeRepository{
 
     @Override
     public int saveVehicule(Vehicule voiture) {
+        System.out.println("JDBC TEMPLATE --------------------------------------------------");
         if (matriculeExists(voiture.getMatricule())) {
             throw new IllegalArgumentException("A vehicle with matricule " + voiture.getMatricule() + " already exists");
         }
@@ -32,6 +33,8 @@ public class VoitureRepository implements VehiculeRepository{
 
     @Override
     public void deleteVehicule(Vehicule vehicule) {
+        System.out.println("JDBC TEMPLATE --------------------------------------------------");
+
         String sql = "DELETE FROM voiture WHERE id = ?";
         jdbcTemplate.update(sql, vehicule.getId());
 
@@ -39,6 +42,8 @@ public class VoitureRepository implements VehiculeRepository{
 
     @Override
     public List<Vehicule> getAllVehicules() {
+        System.out.println("JDBC TEMPLATE --------------------------------------------------");
+
         String sql = "SELECT * FROM voiture";
         List<Vehicule> voitures = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Vehicule.class));
         return voitures;
@@ -46,6 +51,8 @@ public class VoitureRepository implements VehiculeRepository{
 
     @Override
     public Vehicule getVehiculeById(Long id) {
+        System.out.println("JDBC TEMPLATE --------------------------------------------------");
+
         String sql = "SELECT * FROM voiture WHERE id = ?";
         try {
             return jdbcTemplate.queryForObject(sql,
