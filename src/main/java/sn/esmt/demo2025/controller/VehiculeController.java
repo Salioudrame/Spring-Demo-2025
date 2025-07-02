@@ -51,18 +51,16 @@ public class VehiculeController {
         return "home";
     }
 
-
-
     @GetMapping("/cars")
     public String getAllCars(Model model) {
-        List<Vehicule> allVehicules = voitureService.getAllVehicules();
+        List<Voiture> allVehicules = voitureService.getAllVehicules();
         model.addAttribute("cars", allVehicules);
         return "cars";
     }
 
     @GetMapping("/voitures/delete/{id}")
     public String showDeleteForm(@PathVariable Long id, Model model) {
-        Vehicule voiture = voitureService.getVehiculeById(id);
+        Voiture voiture = voitureService.getVehiculeById(id);
         if (voiture == null) {
             return "redirect:/cars";  // Redirection si la voiture n'existe pas
         }

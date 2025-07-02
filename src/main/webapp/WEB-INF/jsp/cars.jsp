@@ -1,5 +1,6 @@
 <%@ page import="sn.esmt.demo2025.domain.Vehicule" %>
 <%@ page import="java.util.List" %>
+<%@ page import="sn.esmt.demo2025.domain.Voiture" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -35,8 +36,8 @@
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
             <%
-                List<Vehicule> cars = (List<Vehicule>) request.getAttribute("cars");
-                for (Vehicule car : cars) {
+                List<Voiture> cars = (List<Voiture>) request.getAttribute("cars");
+                for (Voiture car : cars) {
             %>
             <tr class="hover:bg-gray-50">
                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"><%= car.getMatricule() %></td>
